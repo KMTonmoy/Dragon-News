@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../Shared/Navbar/Navbar';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Signup = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+
     const handelSignUp = e => {
         e.preventDefault();
         const form = new FormData(e.currentTarget)
@@ -10,6 +15,14 @@ const Signup = () => {
         const name = form.get("name")
         const photo = form.get("photo")
         console.log(email, password, name, photo)
+
+        createUser(email, password)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     };
     return (
         <div>
