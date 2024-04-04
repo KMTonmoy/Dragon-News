@@ -1,7 +1,7 @@
 import React from 'react';
 import BrakingNews from '../../Home/BrakingNews';
 import userDefoultImg from '../../../../assets/assets/user.png';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const items = (
@@ -9,12 +9,12 @@ const Navbar = () => {
             <li><NavLink to={'/'}>Home</NavLink></li>
             <li><NavLink to={'/about'}>About</NavLink></li>
             <li><NavLink to={'/career'}>Career</NavLink></li>
+            <li><NavLink to={'/login'}>Login</NavLink></li>
         </>
     );
 
     return (
         <div>
-            <BrakingNews></BrakingNews>
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -34,7 +34,9 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-2">
                     <img className='w-[50px] rounded-full' src={userDefoultImg} alt="" />
-                    <button className='btn bg-gray-700 text-white'>Login</button>
+                    <Link to={'/login'}>
+                        <button className='btn bg-gray-700 text-white'>Login</button>
+                    </Link>
                 </div>
             </div>
         </div>
