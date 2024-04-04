@@ -7,7 +7,9 @@ const Signup = () => {
         const form = new FormData(e.currentTarget)
         const email = form.get("email")
         const password = form.get("password")
-        console.log(email, password)
+        const name = form.get("name")
+        const photo = form.get("photo")
+        console.log(email, password, name, photo)
     };
     return (
         <div>
@@ -22,14 +24,14 @@ const Signup = () => {
                             <label className="label">
                                 <span className="label-text">Your Name</span>
                             </label>
-                            <input type="text" placeholder="Enter your name" className="input input-bordered" required />
+                            <input type="text" name='name' placeholder="Enter your name" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="text" placeholder="Enter your Photo URL" className="input input-bordered" required />
+                            <input type="text" name='photo' placeholder="Enter your Photo URL" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
