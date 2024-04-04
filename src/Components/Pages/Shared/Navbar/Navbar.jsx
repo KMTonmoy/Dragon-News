@@ -1,9 +1,18 @@
-import React from 'react';
-import BrakingNews from '../../Home/BrakingNews';
+import React, { useContext } from 'react';
 import userDefoultImg from '../../../../assets/assets/user.png';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../../../Providers/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handelSignout = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
+
     const items = (
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
@@ -34,9 +43,15 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end gap-2">
                     <img className='w-[50px] rounded-full' src={userDefoultImg} alt="" />
-                    <Link to={'/login'}>
-                        <button className='btn bg-gray-700 text-white'>Login</button>
-                    </Link>
+                    {
+                        user ?
+                            <button className='btn bg-gray-700 text-white' onClick={handelSignout}>Sign Out</button>
+
+                            :
+                            <Link to={'/login'}>
+                                <button className='btn bg-gray-700 text-white'>Login</button>
+                            </Link>
+                    }
                 </div>
             </div>
         </div>
